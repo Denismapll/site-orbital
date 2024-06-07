@@ -136,23 +136,23 @@ get_header(); ?>
 		</div>
 	</section>
 
-	<section style="margin-bottom: 120px;">
+	<section>
 		<div class="container">
 			<div class="col-12">
 				<h1 class="text-primary fw-bold">NOVIDADE</h1>
-				<h3 class="fw-bold">Na Orbital</h3>
+				<h3 class="fw-bold mb-5">Na Orbital</h3>
 			</div>
-			<div class="row" style="height: 400px;">
+			<div class="row" style="min-height: 400px;">
 				<div class="col-md-8 col-12">
 					<div class="row p-3">
-						<div class="col-md-6 col-12">
+						<div class="col-md-6 col-12 p-3">
 							<a href="#">
 								<div class="bg-novidade"
 									style="background-image: url('http://localhost/orbital-wp/wp-content/uploads/2024/06/novidade1.png');">
 								</div>
 							</a>
 						</div>
-						<div class="col-md-6 col-12">
+						<div class="col-md-6 col-12 p-3">
 							<a href="#">
 								<div class="bg-novidade"
 									style="background-image: url('http://localhost/orbital-wp/wp-content/uploads/2024/06/novidade2.png');">
@@ -161,14 +161,14 @@ get_header(); ?>
 						</div>
 					</div>
 					<div class="row p-3">
-						<div class="col-md-6 col-12">
+						<div class="col-md-6 col-12 p-3">
 							<a href="#">
 								<div class="bg-novidade"
 									style="background-image: url('http://localhost/orbital-wp/wp-content/uploads/2024/06/novidade3.png');">
 								</div>
 							</a>
 						</div>
-						<div class="col-md-6 col-12">
+						<div class="col-md-6 col-12 p-3">
 							<a href="#">
 								<div class="bg-novidade"
 									style="background-image: url('http://localhost/orbital-wp/wp-content/uploads/2024/06/novidade4.png');">
@@ -180,7 +180,7 @@ get_header(); ?>
 				<div class="col-md-4 col-12" style="padding-bottom: 10px;">
 					<div class="bg-saibamais"
 						style="background-image: url('http://localhost/orbital-wp/wp-content/uploads/2024/06/saiba-mais.png');">
-						<div
+						<div style="min-height: 450px;"
 							class="bg-black-site text-center d-flex flex-column justify-content-around align-items-center h-100">
 							<h1>SAIBA MAIS</h1>
 							<h2>Veja o Nosso<br>Catálogo</h2>
@@ -192,23 +192,7 @@ get_header(); ?>
 		</div>
 	</section>
 
-	<section style="margin-bottom: 120px; height: 50vh;">
-		<div class="bg-representante"
-			style="background-image: url('http://localhost/orbital-wp/wp-content/uploads/2024/06/banner-tornado.png')">
-			<div class="bg-black-site">
-				<div class="container h-100">
-					<div class="col-md-6 col-12 d-flex justify-content-center flex-column h-100">
-						<h1 class="mb-3 mt-3 fw-bold">Garantimos a Satisfação de Revendedores e Clientes</h1>
-						<h2 class="mb-3 mt-3">Seja nosso <b class="text-primary">REPRESENTANTE</b> no Brasil</h2>
-						<button style="width: fit-content;"class="btn btn-primary mt-3 mb-3 p-3 fs-4 rounded-4 fw-bold">CLIQUE AQUI</button>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
+	<?php get_template_part('templates/content', 'representante'); ?>
 
-
-</body>
-
-<?php
-get_footer();
+	<?php
+	get_footer();

@@ -10828,6 +10828,10 @@ select {
 	background-color: #f5f5f5;
 	padding-top: 15px;
 }
+#footer .container {
+    background-color: #f5f5f5;
+    padding-top: 25px;
+}
 html {
 	position: relative;
 	min-height: 100%;
@@ -10838,6 +10842,16 @@ body {
 }
 
 /* TEMA ORBITAL */
+
+@media screen and (max-width: 600px) {
+    #wpadminbar {
+        position: fixed !important;
+    }
+	.conheca-ajuste {
+        position: none !important;
+        right: 0 !important;
+    }
+}
 
 .bg-pecas {
     margin: 15px;
@@ -10941,4 +10955,42 @@ body {
     background-size: cover;
     background-repeat: no-repeat;
     overflow: hidden;
+}
+
+.bg-empresa {
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: cover;
+	min-height: 80vh;
+}
+
+.bg-conheca {
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: contain;
+	min-height: 350px;
+}
+/* Pagina empresa */
+.conheca-ajuste {
+	position: relative;
+	right: 50px;
+}
+
+.cont {
+	box-shadow: 1px 2px 23px -2px black;
+	min-height: 240px;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	flex-direction: column;
+	text-align: center;
+}
+
+.missao,
+.visao,
+.valores {
+	background-color: whitesmoke;
+	min-height: 340px;
+	box-shadow: 1px 1px 6px 0px black;
+	border-radius: 32px;
 }

@@ -335,3 +335,90 @@ function add_menu_link_class( $atts, $item, $args ) {
 	return $atts;
   }
   add_filter( 'nav_menu_link_attributes', 'add_menu_link_class', 1, 3 );
+
+
+  // Função para registrar o Custom Post Type "Produtos"
+function registrar_cpt_produtos() {
+    $labels = array(
+        'name'               => _x( 'Produtos', 'post type general name', 'textdomain' ),
+        'singular_name'      => _x( 'Produto', 'post type singular name', 'textdomain' ),
+        'menu_name'          => _x( 'Produtos', 'admin menu', 'textdomain' ),
+        'name_admin_bar'     => _x( 'Produto', 'add new on admin bar', 'textdomain' ),
+        'add_new'            => _x( 'Adicionar Novo', 'produto', 'textdomain' ),
+        'add_new_item'       => __( 'Adicionar Novo Produto', 'textdomain' ),
+        'new_item'           => __( 'Novo Produto', 'textdomain' ),
+        'edit_item'          => __( 'Editar Produto', 'textdomain' ),
+        'view_item'          => __( 'Ver Produto', 'textdomain' ),
+        'all_items'          => __( 'Todos os Produtos', 'textdomain' ),
+        'search_items'       => __( 'Procurar Produtos', 'textdomain' ),
+        'parent_item_colon'  => __( 'Produtos Pais:', 'textdomain' ),
+        'not_found'          => __( 'Nenhum produto encontrado.', 'textdomain' ),
+        'not_found_in_trash' => __( 'Nenhum produto encontrado na lixeira.', 'textdomain' )
+    );
+
+    $args = array(
+        'labels'             => $labels,
+        'public'             => true,
+        'publicly_queryable' => true,
+        'show_ui'            => true,
+        'show_in_menu'       => true,
+        'query_var'          => true,
+        'rewrite'            => array( 'slug' => 'produtos' ),
+        'capability_type'    => 'post',
+        'has_archive'        => true,
+        'hierarchical'       => false,
+        'menu_position'      => null,
+        'supports'           => array( 'title', 'editor', 'author', 'thumbnail', 'excerpt', 'comments' ),
+    );
+
+    register_post_type( 'produto', $args );
+}
+add_action( 'init', 'registrar_cpt_produtos' );
+
+// Função para adicionar metaboxes personalizadas ao CPT "Produtos"
+function adicionar_meta_boxes_produtos() {
+    add_meta_box(
+        'produtos_detalhes',
+        __( 'Detalhes do Produto', 'textdomain' ),
+        'renderizar_meta_box_produtos',
+        'produto',
+        'normal',
+        'high'
+    );
+}
+add_action( 'add_meta_boxes', 'adicionar_meta_boxes_produtos' );
+
+// Função para renderizar o conteúdo da metabox
+function renderizar_meta_box_produtos($post) {
+    // Recuperar os valores dos campos personalizados, se existirem
+    $marca = get_post_meta( $post->ID, '_marca_produto', true );
+    $modelo = get_post_meta( $post->ID, '_modelo_produto', true );
+
+    // Campos personalizados
+    echo '<label for="marca_produto">' . __( 'Marca', 'textdomain' ) . '</label>';
+    echo '<input type="text" id="marca_produto" name="marca_produto" value="' . esc_attr( $marca ) . '" size="25" />';
+    echo '<br><br>';
+    echo '<label for="modelo_produto">' . __( 'Modelo', 'textdomain' ) . '</label>';
+    echo '<input type="text" id="modelo_produto" name="modelo_produto" value="' . esc_attr( $modelo ) . '" size="25" />';
+}
+
+// Função para salvar os campos personalizados
+function salvar_meta_box_produtos($post_id) {
+    // Verificar nonce para garantir que o formulário foi enviado da nossa página
+    if ( ! isset( $_POST['marca_produto'] ) || ! isset( $_POST['modelo_produto'] ) ) {
+        return $post_id;
+    }
+
+    // Verificar se o usuário tem permissão para editar o post
+    if ( ! current_user_can( 'edit_post', $post_id ) ) {
+        return $post_id;
+    }
+
+    // Atualizar os valores dos campos personalizados no banco de dados
+    $marca = sanitize_text_field( $_POST['marca_produto'] );
+    $modelo = sanitize_text_field( $_POST['modelo_produto'] );
+
+    update_post_meta( $post_id, '_marca_produto', $marca );
+    update_post_meta( $post_id, '_modelo_produto', $modelo );
+}
+add_action( 'save_post', 'salvar_meta_box_produtos' );
