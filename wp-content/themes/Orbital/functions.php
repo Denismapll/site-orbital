@@ -388,18 +388,60 @@ function adicionar_meta_boxes_produtos() {
 }
 add_action( 'add_meta_boxes', 'adicionar_meta_boxes_produtos' );
 
+
+// Função para obter todas as marcas únicas
+function obter_marcas_unicas() {
+    global $wpdb;
+    $query = "
+        SELECT DISTINCT meta_value 
+        FROM $wpdb->postmeta 
+        WHERE meta_key = '_marca_produto' 
+        ORDER BY meta_value ASC";
+    return $wpdb->get_col($query);
+}
+
+// Função para obter todos os modelos únicos
+function obter_modelos_unicos() {
+    global $wpdb;
+    $query = "
+        SELECT DISTINCT meta_value 
+        FROM $wpdb->postmeta 
+        WHERE meta_key = '_modelo_produto' 
+        ORDER BY meta_value ASC";
+    return $wpdb->get_col($query);
+}
+
 // Função para renderizar o conteúdo da metabox
 function renderizar_meta_box_produtos($post) {
     // Recuperar os valores dos campos personalizados, se existirem
     $marca = get_post_meta( $post->ID, '_marca_produto', true );
     $modelo = get_post_meta( $post->ID, '_modelo_produto', true );
 
+    // Obter todas as marcas e modelos únicos
+    $marcas = obter_marcas_unicas();
+    $modelos = obter_modelos_unicos();
+
     // Campos personalizados
     echo '<label for="marca_produto">' . __( 'Marca', 'textdomain' ) . '</label>';
-    echo '<input type="text" id="marca_produto" name="marca_produto" value="' . esc_attr( $marca ) . '" size="25" />';
+    echo '<select id="marca_produto" name="marca_produto">';
+    echo '<option value="">' . __( 'Selecione uma Marca', 'textdomain' ) . '</option>';
+    foreach ( $marcas as $opcao_marca ) {
+        echo '<option value="' . esc_attr( $opcao_marca ) . '" ' . selected( $marca, $opcao_marca, false ) . '>' . esc_html( $opcao_marca ) . '</option>';
+    }
+    echo '</select>';
     echo '<br><br>';
+    echo '<input type="text" id="nova_marca_produto" name="nova_marca_produto" value="" placeholder="' . __( 'Ou insira uma nova marca', 'textdomain' ) . '" />';
+    echo '<br><br>';
+    
     echo '<label for="modelo_produto">' . __( 'Modelo', 'textdomain' ) . '</label>';
-    echo '<input type="text" id="modelo_produto" name="modelo_produto" value="' . esc_attr( $modelo ) . '" size="25" />';
+    echo '<select id="modelo_produto" name="modelo_produto">';
+    echo '<option value="">' . __( 'Selecione um Modelo', 'textdomain' ) . '</option>';
+    foreach ( $modelos as $opcao_modelo ) {
+        echo '<option value="' . esc_attr( $opcao_modelo ) . '" ' . selected( $modelo, $opcao_modelo, false ) . '>' . esc_html( $opcao_modelo ) . '</option>';
+    }
+    echo '</select>';
+    echo '<br><br>';
+    echo '<input type="text" id="novo_modelo_produto" name="novo_modelo_produto" value="" placeholder="' . __( 'Ou insira um novo modelo', 'textdomain' ) . '" />';
 }
 
 // Função para salvar os campos personalizados
@@ -416,7 +458,17 @@ function salvar_meta_box_produtos($post_id) {
 
     // Atualizar os valores dos campos personalizados no banco de dados
     $marca = sanitize_text_field( $_POST['marca_produto'] );
+    $nova_marca = sanitize_text_field( $_POST['nova_marca_produto'] );
     $modelo = sanitize_text_field( $_POST['modelo_produto'] );
+    $novo_modelo = sanitize_text_field( $_POST['novo_modelo_produto'] );
+
+    if ( ! empty( $nova_marca ) ) {
+        $marca = $nova_marca;
+    }
+
+    if ( ! empty( $novo_modelo ) ) {
+        $modelo = $novo_modelo;
+    }
 
     update_post_meta( $post_id, '_marca_produto', $marca );
     update_post_meta( $post_id, '_modelo_produto', $modelo );
