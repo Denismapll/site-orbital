@@ -15,7 +15,7 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-12 d-flex justify-content-center align-items-center mb-5">
-				<img src="http://localhost/orbital-wp/wp-content/uploads/2024/06/orbital-logo.png" alt="" srcset="">
+				<img src="<?=wp_upload_dir()['baseurl']?>/2024/06/orbital-logo.png" alt="" srcset="">
 			</div>
 			<div class="col-12">
 				<div class="row">
@@ -35,7 +35,7 @@
 					</div>
 					<div class="col-md-4 col-12 text-center">
 						<h3 class="fw-bold mb-5"><img class="margin-left: 10px;"
-								src="http://localhost/orbital-wp/wp-content/uploads/2024/06/celular-icone.png" alt=""
+								src="<?=wp_upload_dir()['baseurl']?>/2024/06/celular-icone.png" alt=""
 								srcset=""><a style="text-decoration: none; color: black;" href="tel:1120857300"><span>11
 									2085-7300</span></a></h3>
 						<h3 class="fw-bold mb-5"><a style="text-decoration: none; color: black;" href="#">11

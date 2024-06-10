@@ -29,10 +29,10 @@
 	}
 </style>
 <header>
-	<nav class="navbar navbar-expand-lg bg-body-tertiary p-4">
+	<nav class="navbar navbar-expand-lg bg-body-tertiary pl-4 pr-4 m-0">
 		<div class="container-fluid">
 			<a class="navbar-brand" href="<?php echo home_url()?>">
-				<img class="w-75"src="http://localhost/orbital-wp/wp-content/uploads/2024/06/orbital-logo.png" alt="" srcset="">
+				<img class="w-75"src="<?=wp_upload_dir()['baseurl']?>/2024/06/orbital-logo.png" alt="" srcset="">
 			</a>
 			<button class="navbar-toggler" type="button" data-bs-toggle="collapse"
 				data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"

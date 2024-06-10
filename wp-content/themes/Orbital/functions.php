@@ -422,25 +422,25 @@ function renderizar_meta_box_produtos($post) {
     $modelos = obter_modelos_unicos();
 
     // Campos personalizados
-    echo '<label for="marca_produto">' . __( 'Marca', 'textdomain' ) . '</label>';
+    echo '<label for="marca_produto">' . __( 'Marca: ', 'textdomain' ) . '</label>';
     echo '<select id="marca_produto" name="marca_produto">';
     echo '<option value="">' . __( 'Selecione uma Marca', 'textdomain' ) . '</option>';
     foreach ( $marcas as $opcao_marca ) {
         echo '<option value="' . esc_attr( $opcao_marca ) . '" ' . selected( $marca, $opcao_marca, false ) . '>' . esc_html( $opcao_marca ) . '</option>';
     }
     echo '</select>';
-    echo '<br><br>';
+    // echo '<br><br>';
     echo '<input type="text" id="nova_marca_produto" name="nova_marca_produto" value="" placeholder="' . __( 'Ou insira uma nova marca', 'textdomain' ) . '" />';
     echo '<br><br>';
     
-    echo '<label for="modelo_produto">' . __( 'Modelo', 'textdomain' ) . '</label>';
+    echo '<label for="modelo_produto">' . __( 'Modelo: ', 'textdomain' ) . '</label>';
     echo '<select id="modelo_produto" name="modelo_produto">';
     echo '<option value="">' . __( 'Selecione um Modelo', 'textdomain' ) . '</option>';
     foreach ( $modelos as $opcao_modelo ) {
         echo '<option value="' . esc_attr( $opcao_modelo ) . '" ' . selected( $modelo, $opcao_modelo, false ) . '>' . esc_html( $opcao_modelo ) . '</option>';
     }
     echo '</select>';
-    echo '<br><br>';
+    // echo '<br><br>';
     echo '<input type="text" id="novo_modelo_produto" name="novo_modelo_produto" value="" placeholder="' . __( 'Ou insira um novo modelo', 'textdomain' ) . '" />';
 }
 
@@ -474,3 +474,162 @@ function salvar_meta_box_produtos($post_id) {
     update_post_meta( $post_id, '_modelo_produto', $modelo );
 }
 add_action( 'save_post', 'salvar_meta_box_produtos' );
+
+// teste
+
+// Adicionar colunas na listagem de produtos
+function adicionar_colunas_produtos($columns) {
+	$columns['marca'] = __( 'Marca', 'textdomain' );
+	$columns['modelo'] = __( 'Modelo', 'textdomain' );
+	return $columns;
+}
+add_filter('manage_produto_posts_columns', 'adicionar_colunas_produtos');
+
+// Preencher as colunas com os valores
+function preencher_colunas_produtos($column, $post_id) {
+	if ($column == 'marca') {
+			$marca = get_post_meta($post_id, '_marca_produto', true);
+			echo esc_html($marca);
+	}
+	if ($column == 'modelo') {
+			$modelo = get_post_meta($post_id, '_modelo_produto', true);
+			echo esc_html($modelo);
+	}
+}
+add_action('manage_produto_posts_custom_column', 'preencher_colunas_produtos', 10, 2);
+
+// Tornar as colunas ordenáveis
+function colunas_produtos_sortable($columns) {
+	$columns['marca'] = 'marca';
+	$columns['modelo'] = 'modelo';
+	return $columns;
+}
+add_filter('manage_edit-produto_sortable_columns', 'colunas_produtos_sortable');
+
+// Manipular a ordenação das colunas
+function ordenar_colunas_produtos($query) {
+	if (!is_admin()) {
+			return;
+	}
+
+	$orderby = $query->get('orderby');
+
+	if ('marca' === $orderby) {
+			$query->set('meta_key', '_marca_produto');
+			$query->set('orderby', 'meta_value');
+	}
+
+	if ('modelo' === $orderby) {
+			$query->set('meta_key', '_modelo_produto');
+			$query->set('orderby', 'meta_value');
+	}
+}
+add_action('pre_get_posts', 'ordenar_colunas_produtos');
+
+// Função para renderizar os metaboxes de marca e modelo
+function renderizar_meta_box_produtos2($post) {
+	$marca = get_post_meta($post->ID, '_marca_produto', true);
+	$modelo = get_post_meta($post->ID, '_modelo_produto', true);
+
+	echo '<label for="marca_produto">' . __( 'Marca', 'textdomain' ) . '</label>';
+	echo '<input type="text" id="marca_produto" name="marca_produto" value="' . esc_attr($marca) . '" size="25" />';
+
+	echo '<br><br><label for="modelo_produto">' . __( 'Modelo', 'textdomain' ) . '</label>';
+	echo '<input type="text" id="modelo_produto" name="modelo_produto" value="' . esc_attr($modelo) . '" size="25" />';
+}
+
+// Adicionar filtros de marca e modelo na listagem de produtos
+function adicionar_filtros_marca_modelo() {
+	global $typenow;
+
+	if ($typenow == 'produto') {
+			// Filtro de Marca
+			$marcas = obter_marcas_unicas();
+			?>
+			<select name="marca_filtrar">
+					<option value=""><?php _e('Todas as Marcas', 'textdomain'); ?></option>
+					<?php
+					foreach ($marcas as $marca) {
+							$selected = (isset($_GET['marca_filtrar']) && $_GET['marca_filtrar'] == $marca) ? 'selected="selected"' : '';
+							echo '<option value="' . esc_attr($marca) . '" ' . $selected . '>' . esc_html($marca) . '</option>';
+					}
+					?>
+			</select>
+			<?php
+
+			// Filtro de Modelo
+			$modelos = obter_modelos_unicos();
+			?>
+			<select name="modelo_filtrar">
+					<option value=""><?php _e('Todos os Modelos', 'textdomain'); ?></option>
+					<?php
+					foreach ($modelos as $modelo) {
+							$selected = (isset($_GET['modelo_filtrar']) && $_GET['modelo_filtrar'] == $modelo) ? 'selected="selected"' : '';
+							echo '<option value="' . esc_attr($modelo) . '" ' . $selected . '>' . esc_html($modelo) . '</option>';
+					}
+					?>
+			</select>
+			<?php
+	}
+}
+add_action('restrict_manage_posts', 'adicionar_filtros_marca_modelo');
+
+// Ajustar a query para filtrar por marca e modelo
+function filtrar_produtos_por_marca_modelo($query) {
+	global $pagenow;
+	$tipo_post = isset($_GET['post_type']) ? $_GET['post_type'] : '';
+
+	if ($tipo_post == 'produto' && $pagenow == 'edit.php') {
+			if (isset($_GET['marca_filtrar']) && $_GET['marca_filtrar'] != '') {
+					$query->query_vars['meta_query'][] = array(
+							'key'     => '_marca_produto',
+							'value'   => $_GET['marca_filtrar'],
+							'compare' => '='
+					);
+			}
+
+			if (isset($_GET['modelo_filtrar']) && $_GET['modelo_filtrar'] != '') {
+					$query->query_vars['meta_query'][] = array(
+							'key'     => '_modelo_produto',
+							'value'   => $_GET['modelo_filtrar'],
+							'compare' => '='
+					);
+			}
+	}
+}
+add_filter('pre_get_posts', 'filtrar_produtos_por_marca_modelo');
+
+// pagination
+
+function custom_pagination($pages = '', $range = 2) {
+	$showitems = ($range * 2) + 1;
+
+	global $paged;
+	if (empty($paged)) $paged = 1;
+
+	if ($pages == '') {
+			global $wp_query;
+			$pages = $wp_query->max_num_pages;
+			if (!$pages) {
+					$pages = 1;
+			}
+	}
+
+	if (1 != $pages) {
+			echo "<div class='pagination'>";
+			if ($paged > 2 && $paged > $range + 1 && $showitems < $pages) echo "<a class='page-link' href='" . get_pagenum_link(1) . "'>&laquo;</a>";
+			if ($paged > 1 && $showitems < $pages) echo "<a class='page-link' href='" . get_pagenum_link($paged - 1) . "'>&lsaquo; </a>";
+
+			for ($i = 1; $i <= $pages; $i++) {
+					if (1 != $pages && (!($i >= $paged + $range + 1 || $i <= $paged - $range - 1) || $pages <= $showitems)) {
+							echo ($paged == $i) ? "<span class='page-link active'>" . $i . "</span>" : "<a class='page-link' href='" . get_pagenum_link($i) . "' class='inactive'>" . $i . "</a>";
+					}
+			}
+
+			if ($paged < $pages && $showitems < $pages) echo "<a class='page-link' href='" . get_pagenum_link($paged + 1) . "'> &rsaquo;</a>";
+			if ($paged < $pages - 1 && $paged + $range - 1 < $pages && $showitems < $pages) echo "<a class='page-link' href='" . get_pagenum_link($pages) . "'> &raquo;</a>";
+			echo "</div>\n";
+	}
+}
+
+

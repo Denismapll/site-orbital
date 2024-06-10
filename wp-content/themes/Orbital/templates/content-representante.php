@@ -1,6 +1,6 @@
-<section style="margin-bottom: 120px; height: 50vh;">
+<section style="height: 50vh;">
     <div class="bg-representante"
-        style="background-image: url('http://localhost/orbital-wp/wp-content/uploads/2024/06/banner-tornado.png')">
+        style="background-image: url('<?=wp_upload_dir()['baseurl']?>/2024/06/banner-tornado.png')">
         <div class="bg-black-site">
             <div class="container h-100">
                 <div class="col-md-6 col-12 d-flex justify-content-center flex-column h-100">
