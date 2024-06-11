@@ -56,10 +56,11 @@
 					<p style="margin: 0; font-size: 12px;">(11) 2085-7300</p>
 				</div>
 
-				<form class="d-flex" role="search">
-					<input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-					<button class="btn btn-outline-success" type="submit">Search</button>
+				<form role="search" method="get" class="search-form d-flex" action="<?php echo esc_url(home_url('/')); ?>">
+					<input type="search" class="search-field form-control me-2" placeholder="<?php echo esc_attr_x('Search', 'placeholder'); ?>" value="<?php echo get_search_query(); ?>" name="s" aria-label="Search" />
+					<button type="submit" class="search-submit btn btn-outline-success"><?php echo esc_html_x('Search', 'submit button'); ?></button>
 				</form>
+
 			</div>
 		</div>
 	</nav>

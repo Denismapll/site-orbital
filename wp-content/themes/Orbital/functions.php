@@ -633,3 +633,13 @@ function custom_pagination($pages = '', $range = 2) {
 }
 
 
+// Remover paginas da pesquisa
+
+function filter_search_query($query) {
+	if ($query->is_search && !is_admin()) {
+			// Defina os tipos de post que você quer incluir na pesquisa
+			$query->set('post_type', array('produto'));
+	}
+	return $query;
+}
+add_filter('pre_get_posts', 'filter_search_query');

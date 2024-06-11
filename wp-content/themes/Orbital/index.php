@@ -50,7 +50,8 @@ get_header(); ?>
 			<div class="row justify-content-around">
 				<div class="col-md-3 col-6" data-aos="fade-down"
      data-aos-easing=""
-     data-aos-duration="500">
+     data-aos-duration="2000"
+		 data-aos-delay="200">
 					<div class="bg-pecas" style="background-image: url('<?= wp_upload_dir()['baseurl'] ?>/2024/06/rabetas-index.png');">
 						<p style="font-size: 16px; font-weight: 800;" class="text-right"><a href="#">VER</a></p>
 						<div class="abs">
@@ -60,7 +61,8 @@ get_header(); ?>
 				</div>
 				<div class="col-md-3 col-6" data-aos="fade-down"
      data-aos-easing=""
-     data-aos-duration="1000">
+     data-aos-duration="2000"
+		 data-aos-delay="400">
 					<div class="bg-pecas" style="background-image: url('<?= wp_upload_dir()['baseurl'] ?>/2024/06/rear-index.png');">
 						<p style="font-size: 16px; font-weight: 800;" class="text-right"><a href="#">VER</a></p>
 						<div class="abs">
@@ -70,7 +72,8 @@ get_header(); ?>
 				</div>
 				<div class="col-md-3 col-6" data-aos="fade-down"
      data-aos-easing=""
-     data-aos-duration="1500">
+     data-aos-duration="2000"
+		 data-aos-delay="600">
 					<div class="bg-pecas" style="background-image: url('<?= wp_upload_dir()['baseurl'] ?>/2024/06/pedaleiras-index.png');">
 						<p style="font-size: 16px; font-weight: 800;" class="text-right"><a href="#">VER</a></p>
 						<div class="abs">
@@ -80,7 +83,8 @@ get_header(); ?>
 				</div>
 				<div class="col-md-3 col-6" data-aos="fade-down"
      data-aos-easing=""
-     data-aos-duration="2000">
+     data-aos-duration="2000"
+		 data-aos-delay="800">
 					<div class="bg-pecas" style="background-image: url('<?= wp_upload_dir()['baseurl'] ?>/2024/06/protetor-index.png');">
 						<p style="font-size: 16px; font-weight: 800;" class="text-right"><a href="#">VER</a></p>
 						<div class="abs">
@@ -100,21 +104,21 @@ get_header(); ?>
 				<p style="text-align: right;"><a style="color: black; text-decoration: none" href="#">Ver Todos<br><img style="width: 12px;" src="<?= wp_upload_dir()['baseurl'] ?>/2024/06/seta-direita.png" alt="" srcset=""></a></p>
 			</div>
 			<div class="row">
-				<div class="col-md-4 col-12" style="padding: 20px;" data-aos="fade-down" data-aos-duration="500">
+				<div class="col-md-4 col-12" style="padding: 20px;" data-aos="fade-down" data-aos-duration="2000" data-aos-delay="200">
 					<div class="bg-destaques" style="background-image: url('<?= wp_upload_dir()['baseurl'] ?>/2024/06/roldana.jpg')">
 						<div class="abs-destaques">
 							<a href="#" class="link-custom" style="color: white;">Roldana <br> Para Moto</a>
 						</div>
 					</div>
 				</div>
-				<div class="col-md-4 col-12" style="padding: 20px;" data-aos="fade-down" data-aos-duration="1000">
+				<div class="col-md-4 col-12" style="padding: 20px;" data-aos="fade-down" data-aos-duration="2000" data-aos-delay="400">
 					<div class="bg-destaques" style="background-image: url('<?= wp_upload_dir()['baseurl'] ?>/2024/06/pedal.jpg')">
 						<div class="abs-destaques">
 							<a href="#" class="link-custom" style="color: white;">Pedal <br> Para Moto</a>
 						</div>
 					</div>
 				</div>
-				<div class="col-md-4 col-12" style="padding: 20px;" data-aos="fade-down" data-aos-duration="1500">
+				<div class="col-md-4 col-12" style="padding: 20px;" data-aos="fade-down" data-aos-duration="2000" data-aos-delay="600">
 					<div class="bg-destaques" style="background-image: url('<?= wp_upload_dir()['baseurl'] ?>/2024/06/carcaca.jpg')">
 						<div class="abs-destaques">
 							<a href="#" class="link-custom" style="color: white;">Carcaca <br> Para Moto</a>
@@ -130,7 +134,7 @@ get_header(); ?>
      data-aos-easing="ease-in-sine">
 		<div class="container" style="height: 100%; background: url('<?= wp_upload_dir()['baseurl'] ?>/2024/06/cg-160.png');     background-repeat: no-repeat;
 	background-position: center; background-size: contain">
-			<div class="col-md-6">
+			<div class="col-md-6" data-aos-delay="600" data-aos="zoom-out-right">
 				<h1 class="fw-bold mt-3">Como todos os automóveis e máquinas,</h1>
 				<h3> as motocicletas precisam de rotinas periódicas de manutenção, ocasiões nas quais pode ser
 					necessário comprar peças de moto novas para garantir a adequação do veículo às condições ideais de
@@ -150,13 +154,13 @@ get_header(); ?>
 			<div class="row" style="min-height: 400px;">
 				<div class="col-md-8 col-12">
 					<div class="row p-3">
-						<div class="col-md-6 col-12 p-3"  data-aos="fade-left" data-aos-duration="500">
+						<div class="col-md-6 col-12 p-3"  data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">
 							<a href="#">
 								<div class="bg-novidade" style="background-image: url('<?= wp_upload_dir()['baseurl'] ?>/2024/06/novidade1.png');">
 								</div>
 							</a>
 						</div>
-						<div class="col-md-6 col-12 p-3"  data-aos="fade-left" data-aos-duration="1000">
+						<div class="col-md-6 col-12 p-3"  data-aos="fade-up" data-aos-duration="1000" data-aos-delay="400">
 							<a href="#">
 								<div class="bg-novidade" style="background-image: url('<?= wp_upload_dir()['baseurl'] ?>/2024/06/novidade2.png');">
 								</div>
@@ -164,13 +168,13 @@ get_header(); ?>
 						</div>
 					</div>
 					<div class="row p-3">
-						<div class="col-md-6 col-12 p-3"  data-aos="fade-left" data-aos-duration="1500">
+						<div class="col-md-6 col-12 p-3"  data-aos="fade-up" data-aos-duration="1500" data-aos-delay="600">
 							<a href="#">
 								<div class="bg-novidade" style="background-image: url('<?= wp_upload_dir()['baseurl'] ?>/2024/06/novidade3.png');">
 								</div>
 							</a>
 						</div>
-						<div class="col-md-6 col-12 p-3"  data-aos="fade-left" data-aos-duration="1500">
+						<div class="col-md-6 col-12 p-3"  data-aos="fade-up" data-aos-duration="1500" data-aos-delay="800">
 							<a href="#">
 								<div class="bg-novidade" style="background-image: url('<?= wp_upload_dir()['baseurl'] ?>/2024/06/novidade4.png');">
 								</div>
@@ -178,7 +182,7 @@ get_header(); ?>
 						</div>
 					</div>
 				</div>
-				<div class="col-md-4 col-12" style="padding-bottom: 10px;"  data-aos="fade-left" data-aos-duration="2000">
+				<div class="col-md-4 col-12" style="padding-bottom: 10px;"  data-aos="fade-up" data-aos-duration="2000">
 					<div class="bg-saibamais" style="background-image: url('<?= wp_upload_dir()['baseurl'] ?>/2024/06/saiba-mais.png');">
 						<div style="min-height: 450px;" class="bg-black-site text-center d-flex flex-column justify-content-around align-items-center h-100">
 							<h1>SAIBA MAIS</h1>
