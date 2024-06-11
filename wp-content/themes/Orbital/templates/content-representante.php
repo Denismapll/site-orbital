@@ -1,4 +1,4 @@
-<section style="height: 50vh;">
+<section style="height: 50vh;" data-aos="fade-up" data-aos-duration="1000">
     <div class="bg-representante"
         style="background-image: url('<?=wp_upload_dir()['baseurl']?>/2024/06/banner-tornado.png')">
         <div class="bg-black-site">

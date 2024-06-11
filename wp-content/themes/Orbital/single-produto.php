@@ -61,12 +61,13 @@
                         <div class="col-md-5 col-12">
                             <div id="carouselExampleIndicators" class="carousel slide">
                                 <div class="carousel-inner">
-                                    <?php foreach ($y as $url) : if (!empty($url)) : ?>
-                                            <div class="carousel-item ">
-                                                <img src="<?= $url ?>" class="d-block w-100" alt="<?= $url ?>">
-                                            </div>
+                                    <?php if (!empty($y)) : foreach ($y as $url) : if (!empty($url)) : ?>
+                                                <div class="carousel-item ">
+                                                    <img src="<?= $url ?>" class="d-block w-100" alt="<?= $url ?>">
+                                                </div>
                                     <?php endif;
-                                    endforeach; ?>
+                                        endforeach;
+                                    endif; ?>
                                     <div class="carousel-item">
                                         <img src="https://picsum.photos/577/380?random=2" class="d-block w-100" alt="https://picsum.photos/577/380?random=2">
                                     </div>
@@ -84,16 +85,19 @@
                                 </button>
                             </div>
                             <div class="row mt-3 mb-3">
-                                <?php foreach ($y as $url) : if (!empty($url)) : ?>
-                                        <div class="col-md-4 col-12">
-                                            <img class="w-100" src="<?php echo $url;?>" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1">
-                                        </div>
-                                <?php endif;
-                                endforeach; ?>
-                                <div class="col-md-4 col-12">
+                                <?php $i = 0;
+                                if (!empty($y)) : foreach ($y as $key => $url) : if (!empty($url)) : ?>
+                                            <div class="col-md-4 col-12">
+                                                <img class="w-100" src="<?php echo $url; ?>" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="<?php echo $i; ?>" class="active" aria-current="true" aria-label="Slide 1">
+                                            </div>
+                                <?php $i++;
+                                        endif;
+                                    endforeach;
+                                endif; ?>
+                                <div class="col-md-4 d-none d-md-block">
                                     <img class="w-100" src="https://picsum.photos/577/380?random=2" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" class="active" aria-current="true" aria-label="Slide 1">
                                 </div>
-                                <div class="col-md-4 col-12">
+                                <div class="col-md-4 d-none d-md-block">
                                     <img class="w-100" src="https://picsum.photos/577/380?random=3" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" class="active" aria-current="true" aria-label="Slide 1">
                                 </div>
                             </div>
@@ -177,6 +181,52 @@
             </section>
 
 
+            <div id="map" style="height: 400px;"></div>
+
+            <script>
+                var map;
+
+                function success(pos) {
+
+                    if (map === undefined) {
+                        map = L.map('map').setView([pos.coords.latitude, pos.coords.longitude], 13);
+                    } else {
+                        map.remove();
+                        map = L.map('map').setView([pos.coords.latitude, pos.coords.longitude], 13);
+                    }
+
+                    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                    }).addTo(map);
+
+                    L.marker([pos.coords.latitude, pos.coords.longitude]).addTo(map)
+                        .bindPopup('Você está aqui !')
+                        .openPopup();
+
+                    L.marker([-23.45601, -46.46652]).addTo(map)
+                        .bindPopup('Orbital Plástics Parts Peças e Acessórios Ltda')
+                        .openPopup();
+                }
+
+                function error(err) {
+                    var map = L.map('map').setView([-23.45601, -46.46652], 13);
+
+                    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                    }).addTo(map);
+
+                    L.marker([-23.45601, -46.46652]).addTo(map)
+                        .bindPopup('Orbital Plástics Parts Peças e Acessórios Ltda')
+                        .openPopup();
+                }
+
+                var watchID = navigator.geolocation.watchPosition(success, error, {
+                    enableHighAccuracy: true,
+                    timeout: 5000
+                });
+
+                //navigator.geolocation.clearWatch(watchID);
+            </script>
 
 
 
