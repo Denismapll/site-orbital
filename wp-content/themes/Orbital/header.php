@@ -33,35 +33,37 @@
 		font-size: 13px;
 	}
 </style>
-<header>
-	<nav class="navbar navbar-expand-lg bg-body-tertiary pl-4 pr-4 m-0">
-		<div class="container-fluid">
-			<a class="navbar-brand" href="<?php echo home_url() ?>">
-				<img class="w-75" src="<?= wp_upload_dir()['baseurl'] ?>/2024/06/orbital-logo.png" alt="" srcset="">
-			</a>
-			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-				<span class="navbar-toggler-icon"></span>
-			</button>
-			<div class="collapse navbar-collapse" id="navbarSupportedContent">
-				<?php echo wp_nav_menu(array(
-					'container' => false,
-					'menu_class' => 'navbar-nav me-auto mb-2 mb-lg-0',
-					'add_li_class'  => 'nav-item',
-					'link_class' => 'nav-link'
+<header  style="background: #f8f9fa">
+	<div class="container">
+		<nav class="navbar navbar-expand-lg bg-body-tertiary pl-4 pr-4 m-0">
+			<div class="container-fluid">
+				<a class="navbar-brand" href="<?php echo home_url() ?>">
+					<img class="w-75" src="<?= wp_upload_dir()['baseurl'] ?>/2024/06/orbital-logo.png" alt="" srcset="">
+				</a>
+				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="collapse navbar-collapse" id="navbarSupportedContent">
+					<?php echo wp_nav_menu(array(
+						'container' => false,
+						'menu_class' => 'navbar-nav me-auto mb-2 mb-lg-0',
+						'add_li_class'  => 'nav-item',
+						'link_class' => 'nav-link'
 
-				)); ?>
+					)); ?>
 
-				<div class="d-flex flex-column justify-content-center align-items-center m-3">
-					<p style="margin: 0; font-size: 12px;">Ligue Agora</p>
-					<p style="margin: 0; font-size: 12px;">(11) 2085-7300</p>
+					<div class="d-flex flex-column justify-content-center align-items-center m-3">
+						<p style="margin: 0; font-size: 12px;">Ligue Agora</p>
+						<p style="margin: 0; font-size: 12px;">(11) 2085-7300</p>
+					</div>
+
+					<form role="search" method="get" class="search-form d-flex" action="<?php echo esc_url(home_url('/')); ?>">
+						<input type="search" class="search-field form-control me-2" placeholder="<?php echo esc_attr_x('Search', 'placeholder'); ?>" value="<?php echo get_search_query(); ?>" name="s" aria-label="Search" />
+						<button type="submit" class="search-submit btn btn-outline-success"><?php echo esc_html_x('Search', 'submit button'); ?></button>
+					</form>
+
 				</div>
-
-				<form role="search" method="get" class="search-form d-flex" action="<?php echo esc_url(home_url('/')); ?>">
-					<input type="search" class="search-field form-control me-2" placeholder="<?php echo esc_attr_x('Search', 'placeholder'); ?>" value="<?php echo get_search_query(); ?>" name="s" aria-label="Search" />
-					<button type="submit" class="search-submit btn btn-outline-success"><?php echo esc_html_x('Search', 'submit button'); ?></button>
-				</form>
-
 			</div>
-		</div>
-	</nav>
+		</nav>
+	</div>
 </header>

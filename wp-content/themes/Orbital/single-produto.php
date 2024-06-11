@@ -63,17 +63,17 @@
                                 <div class="carousel-inner">
                                     <?php if (!empty($y)) : foreach ($y as $url) : if (!empty($url)) : ?>
                                                 <div class="carousel-item ">
-                                                    <img src="<?= $url ?>" class="d-block w-100" alt="<?= $url ?>">
+                                                    <img style="height: 360px; object-fit: contain;" src="<?= $url ?>" class="d-block w-100" alt="<?= $url ?>">
                                                 </div>
                                     <?php endif;
                                         endforeach;
                                     endif; ?>
-                                    <div class="carousel-item">
+                                    <!-- <div class="carousel-item">
                                         <img src="https://picsum.photos/577/380?random=2" class="d-block w-100" alt="https://picsum.photos/577/380?random=2">
                                     </div>
                                     <div class="carousel-item">
                                         <img src="https://picsum.photos/577/380?random=3" class="d-block w-100" alt="https://picsum.photos/577/380?random=3">
-                                    </div>
+                                    </div> -->
                                 </div>
                                 <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
                                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -88,18 +88,18 @@
                                 <?php $i = 0;
                                 if (!empty($y)) : foreach ($y as $key => $url) : if (!empty($url)) : ?>
                                             <div class="col-md-4 col-12">
-                                                <img class="w-100" src="<?php echo $url; ?>" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="<?php echo $i; ?>" class="active" aria-current="true" aria-label="Slide 1">
+                                                <img style=" object-fit: contain; height: 175px;" class="col-md-4 d-none d-md-block w-100" src="<?php echo $url; ?>" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="<?php echo $i; ?>" class="active" aria-current="true" aria-label="Slide 1">
                                             </div>
                                 <?php $i++;
                                         endif;
                                     endforeach;
                                 endif; ?>
-                                <div class="col-md-4 d-none d-md-block">
+                                <!-- <div class="col-md-4 d-none d-md-block">
                                     <img class="w-100" src="https://picsum.photos/577/380?random=2" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" class="active" aria-current="true" aria-label="Slide 1">
                                 </div>
                                 <div class="col-md-4 d-none d-md-block">
                                     <img class="w-100" src="https://picsum.photos/577/380?random=3" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" class="active" aria-current="true" aria-label="Slide 1">
-                                </div>
+                                </div> -->
                             </div>
                         </div>
                         <div class="col-md-4 col-12">

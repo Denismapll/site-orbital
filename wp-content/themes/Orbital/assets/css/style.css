@@ -11004,7 +11004,7 @@ body {
 .bg-prod {
 	height: 360px;
 	background-repeat: no-repeat;
-	background-size: cover;
+	background-size: contain;
 	border-radius: 15px;
 	overflow: hidden;
 	position: relative;

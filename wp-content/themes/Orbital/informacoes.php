@@ -13,7 +13,7 @@ get_header();
 ?>
 
 <body>
-    <section>
+    <section data-aos="fade-down" data-aos-easing="" data-aos-duration="1000">
         <div class="bg-empresa d-flex justify-content-center align-items-center" style="background-image: url('<?= wp_upload_dir()['baseurl'] ?>/2024/06/informacoes-banner.png')">
             <div class="container h-100">
                 <div class="row h-100">
@@ -121,13 +121,13 @@ get_header();
                         }
 
                         $query = new WP_Query($args);
-
+                        $i = 100;
                         if ($query->have_posts()) :
 
                             while ($query->have_posts()) :
                                 $query->the_post(); ?>
 
-                                <div class="col-md-3 col-12">
+                                <div class="col-md-3 col-12" data-aos="fade-down" data-aos-easing="" data-aos-duration="1000" data-aos-delay="<?php echo $i; ?>">
                                     <div class="bg-prod" style="background-image: url(' <?php the_post_thumbnail_url(); ?>')">
                                         <h3 class="title-prod"><a href="<?php echo the_permalink(); ?>"> <?php echo the_title(); ?></a></h3>
                                     </div>
@@ -147,7 +147,13 @@ get_header();
 
 
 
-                            <?php endwhile;
+                            <?php
+                                if ($i > 400) {
+                                    $i = 100;
+                                } else {
+                                    $i += 100;
+                                }
+                            endwhile;
 
                             custom_pagination($query->max_num_pages, 2);
 

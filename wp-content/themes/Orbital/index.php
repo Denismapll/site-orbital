@@ -168,13 +168,13 @@ get_header(); ?>
 						</div>
 					</div>
 					<div class="row p-3">
-						<div class="col-md-6 col-12 p-3"  data-aos="fade-up" data-aos-duration="1500" data-aos-delay="600">
+						<div class="col-md-6 col-12 p-3"  data-aos="fade-up" data-aos-duration="1000" data-aos-delay="600">
 							<a href="#">
 								<div class="bg-novidade" style="background-image: url('<?= wp_upload_dir()['baseurl'] ?>/2024/06/novidade3.png');">
 								</div>
 							</a>
 						</div>
-						<div class="col-md-6 col-12 p-3"  data-aos="fade-up" data-aos-duration="1500" data-aos-delay="800">
+						<div class="col-md-6 col-12 p-3"  data-aos="fade-up" data-aos-duration="1000" data-aos-delay="800">
 							<a href="#">
 								<div class="bg-novidade" style="background-image: url('<?= wp_upload_dir()['baseurl'] ?>/2024/06/novidade4.png');">
 								</div>
