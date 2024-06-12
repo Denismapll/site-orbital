@@ -37,7 +37,7 @@
 	<div class="container">
 		<nav class="navbar navbar-expand-lg bg-body-tertiary pl-4 pr-4 m-0">
 			<div class="container-fluid">
-				<a class="navbar-brand" href="<?php echo home_url() ?>">
+				<a class="navbar-brand m-auto" href="<?php echo home_url() ?>">
 					<img class="w-75" src="<?= wp_upload_dir()['baseurl'] ?>/2024/06/orbital-logo.png" alt="" srcset="">
 				</a>
 				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -48,7 +48,7 @@
 						'container' => false,
 						'menu_class' => 'navbar-nav me-auto mb-2 mb-lg-0',
 						'add_li_class'  => 'nav-item',
-						'link_class' => 'nav-link'
+						'link_class' => 'nav-link fs-4'
 
 					)); ?>
 
@@ -59,7 +59,7 @@
 
 					<form role="search" method="get" class="search-form d-flex" action="<?php echo esc_url(home_url('/')); ?>">
 						<input type="search" class="search-field form-control me-2" placeholder="<?php echo esc_attr_x('Search', 'placeholder'); ?>" value="<?php echo get_search_query(); ?>" name="s" aria-label="Search" />
-						<button type="submit" class="search-submit btn btn-outline-success"><?php echo esc_html_x('Search', 'submit button'); ?></button>
+						<button type="submit" class="search-submit btn btn-primary"><?php echo esc_html_x('Search', 'submit button'); ?></button>
 					</form>
 
 				</div>

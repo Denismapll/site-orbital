@@ -10856,6 +10856,7 @@ body {
     background-size: cover;
     position: relative;
     overflow: hidden;
+		transition: 1s all;
 }
 
 .abs {
@@ -10895,6 +10896,7 @@ body {
     background-size: contain;
     position: relative;
     overflow: hidden;
+		transition: 1s all;
 }
 
 .abs-destaques {
@@ -10922,6 +10924,7 @@ body {
     background-size: contain;
     position: relative;
     overflow: hidden;
+		transition: 1s all;
 }
 
 .bg-saibamais {
@@ -11042,4 +11045,17 @@ body {
 }
 .intern {
 	height: 220px;
+}
+
+
+.bg-pecas:hover {
+	transform: translate(0, -10px);
+}
+
+.bg-destaques:hover {
+	transform: translate(0,-10px);
+}
+
+.bg-novidade:hover {
+	transform: translate(0,-10px);
 }

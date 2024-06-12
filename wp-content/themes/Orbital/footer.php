@@ -28,7 +28,7 @@
 						</div>
 					</div>
 					<div class="col-md-4 col-12 text-center">
-						<h3 class="mb-5 text-primary">PRODUTOS</h3>
+						<h3 class="mb-5 text-primary"><a style="text-decoration: none; color: black;" href="#">PRODUTOS</a></h3>
 						<h3 class="mb-5"><a style="text-decoration: none; color: black;" href="#">DESTAQUES</a></h3>
 						<h3 class="mb-5"><a style="text-decoration: none; color: black;" href="#">NOVIDADES</a></h3>
 						<h3 class="mb-5"><a style="text-decoration: none; color: black;" href="#">PESQUISAR</a></h3>
@@ -44,6 +44,9 @@
 								href="mailto:contato@orbital.com.br">contato@orbital.com.br</a></h3>
 						<h3 class="mb-5"><a style="text-decoration: none; color: black;"
 								href="mailto:comercial@orbital.com.br">comercial@orbital.com.br</a></h3>
+					</div>
+					<div class="col-12">
+						<p class="m-4 text-right">© Orbital <?php echo date('Y');?>, Todos os direitos reservados. | Desenvolvido por : <a href="https://mddweb.com.br"><img style="width: 145px;" src="http://localhost/orbital/site-orbital/wp-content/uploads/2024/06/logo-mddweb.jpg" alt="" srcset=""></a></p>
 					</div>
 				</div>
 			</div>
