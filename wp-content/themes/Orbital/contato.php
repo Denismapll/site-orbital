@@ -48,6 +48,7 @@ get_header();
                     <div class="h-100 rounded-3 p-4">
                         <h1 class="text-center fw-bold mt-5">Deixe sua Mensangem</h1>
                         <?php  the_post() ;echo the_content();?>
+                        teste
                     </div>
                 </div>
             </div>
