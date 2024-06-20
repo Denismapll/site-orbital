@@ -3983,14 +3983,14 @@ a.btn.disabled,
 fieldset[disabled] a.btn {
 	pointer-events: none;
 }
-.btn-default,
+/* .btn-default,
 input[type="submit"],
 input[type="reset"],
 button {
 	color: #333;
 	background-color: #fff;
 	border-color: #ccc;
-}
+} */
 .btn-default:focus,
 input[type="submit"]:focus,
 input[type="reset"]:focus,

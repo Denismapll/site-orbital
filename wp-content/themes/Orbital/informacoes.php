@@ -35,11 +35,11 @@ get_header();
                     <div class="d-flex justify-content-center align-items-center pos-top fs-5">
 
                         <!-- Formulário de pesquisa -->
-                        <form method="GET" action="" class="form-info">
+                        <form method="GET" action="" class="form-info rounded-4 col-md-8 col-12">
 
                             <div class="d-flex mt-3 mb-3">
-
-                                <span class="input-group-text fs-4" id="inputGroup-sizing-default">Marca:</span>
+<!-- 
+                                <span class="input-group-text fs-4" id="inputGroup-sizing-default">Marca:</span> -->
                                 <select id="marca" name="marca" style="color: black; margin-right: 5px;" class="form-select fs-4">
                                     <option value="">Selecione uma Marca</option>
                                     <?php
@@ -52,7 +52,7 @@ get_header();
                                 </select>
 
 
-                                <span class="input-group-text fs-4" id="inputGroup-sizing-default">Modelo:</span>
+                                <!-- <span class="input-group-text fs-4" id="inputGroup-sizing-default">Modelo:</span> -->
                                 <select id="modelo" name="modelo" style="color: black" class="form-select fs-4">
                                     <option value="">Selecione um Modelo</option>
                                     <?php
@@ -68,11 +68,9 @@ get_header();
 
                             <div class="d-flex">
 
-                                <span class="input-group-text fs-4" id="inputGroup-sizing-default">Produto:</span>
+                                <input placeholder="Busque um produto" class="form-control fs-4" style="color: black" type="text" id="produto" name="produto" value="<?php echo isset($_GET['produto']) ? esc_attr($_GET['produto']) : ''; ?>" />
 
-                                <input class="form-control fs-4" style="color: black" type="text" id="produto" name="produto" value="<?php echo isset($_GET['produto']) ? esc_attr($_GET['produto']) : ''; ?>" />
-
-                                <input type="submit" value="Pesquisar" />
+                                <input type="submit" value="Buscar" class="btn btn-primary"/>
                             </div>
 
                         </form>

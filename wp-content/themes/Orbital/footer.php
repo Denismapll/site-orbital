@@ -46,7 +46,7 @@
 								href="mailto:comercial@orbital.com.br">comercial@orbital.com.br</a></h3>
 					</div>
 					<div class="col-12">
-						<p class="m-4 text-right">© Orbital <?php echo date('Y');?>, Todos os direitos reservados. | Desenvolvido por : <a href="https://mddweb.com.br"><img style="width: 145px;" src="http://localhost/orbital/site-orbital/wp-content/uploads/2024/06/logo-mddweb.jpg" alt="" srcset=""></a></p>
+						<p class="m-4 text-right">© Orbital <?php echo date('Y');?>, Todos os direitos reservados. | Desenvolvido por : <a href="https://mddweb.com.br"><img style="width: 145px;" src="<?= wp_upload_dir()['baseurl'] ?>/2024/06/logo-mddweb.jpg" alt="" srcset=""></a></p>
 					</div>
 				</div>
 			</div>
