@@ -35,9 +35,9 @@ get_header();
                     <div class="d-flex justify-content-center align-items-center pos-top fs-5">
 
                         <!-- Formulário de pesquisa -->
-                        <form method="GET" action="" class="form-info rounded-4 col-md-8 col-12">
+                        <form method="GET" action="" class="form-info rounded-4 col-md-8 col-12 row">
 
-                            <div class="d-flex mt-3 mb-3">
+                            <div class="d-flex mt-3 mb-3 col-md-6 col-12 p-0">
 <!-- 
                                 <span class="input-group-text fs-4" id="inputGroup-sizing-default">Marca:</span> -->
                                 <select id="marca" name="marca" style="color: black; margin-right: 5px;" class="form-select fs-4">
@@ -66,7 +66,7 @@ get_header();
                             </div>
 
 
-                            <div class="d-flex">
+                            <div class="d-flex col-md-6 col-12 mt-3 mb-3 pl-1 gap-2">
 
                                 <input placeholder="Busque um produto" class="form-control fs-4" style="color: black" type="text" id="produto" name="produto" value="<?php echo isset($_GET['produto']) ? esc_attr($_GET['produto']) : ''; ?>" />
 
